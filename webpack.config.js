@@ -4,7 +4,9 @@ module.exports = {
   entry: './main.ts',
   watch: true,
   watchOptions: {
-    ignored: ['node_modules']
+    ignored: ['node_modules'],
+    aggregateTimeout: 300,
+    poll: 1000
   },
   module: {
     rules: [

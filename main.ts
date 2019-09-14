@@ -1,7 +1,6 @@
 import {MainPort } from "./port";
+// import {MainShip} from "./ships";
 import * as PIXI from 'pixi.js-legacy';
-
-let portsArray = [];
 
 const renderer = PIXI.autoDetectRenderer( {
   width: 900,
@@ -29,14 +28,9 @@ function render(){
     renderer.render(stage);
 }
 
-
 let full = false;
+let portsArray = [];
 
-window.onload = () => {
-  createPort();
-  new renderPorts(portsArray, full)
-  document.body.appendChild(renderer.view);
-}
 function createPort() {
   for (let i = 30; i <= 560; i += 140) {
     portsArray.push(new MainPort(i));
@@ -59,3 +53,40 @@ function renderPorts(arr: Array<MainPort>, full) {
   });
   render();
 } 
+window.onload = () => {
+  createPort();
+  new renderPorts(portsArray, full);
+  document.body.appendChild(renderer.view);
+}
+class MainShip {
+  constructor (public color: number, public isComplete: boolean) {
+    let rectangle = new PIXI.Graphics();
+    rectangle.lineStyle(5, color, 1);
+    if (isComplete == true) {
+      rectangle.beginFill(color);
+    } 
+    rectangle.drawRect(0, 0, 120, 40);
+    rectangle.endFill();
+    rectangle.x = 600;
+    rectangle.y = 200;
+    console.log('ship is created')
+    stage.addChild(rectangle);
+  }
+}
+
+let complete;
+let shipColors = [0x00FF00, 0xFF0000];
+
+function newShip () {
+  let randomColor = shipColors[Math.floor(Math.random()*shipColors.length)];
+  if (randomColor == shipColors[0]) {
+    complete = false;
+  } else {
+    complete = true;
+  }
+  let ship = new MainShip (randomColor, complete);
+}
+newShip();
+
+
+
