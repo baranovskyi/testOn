@@ -1,7 +1,4 @@
 export class MainPort {
-    public isFull: boolean = false;
-
-    constructor(public y: number){
-        
+        constructor(public y: number, public isFull = false){
     }
 }
