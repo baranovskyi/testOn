@@ -10,9 +10,14 @@
   "author": "rozbiygolova",
   "license": "ISC",
   "dependencies": {
+    "@tweenjs/tween.js": "^18.3.1",
+    "@types/createjs": "0.0.29",
     "@types/node": "^12.7.5",
+    "@types/tween.js": "^17.2.0",
     "common-js": "^0.3.8",
     "commonjs": "0.0.1",
+    "createjs": "^1.0.1",
+    "pixi-tween": "^0.2.0",
     "pixi.js": "^5.1.3",
     "pixi.js-legacy": "5.1.1"
   },
